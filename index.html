@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>I'm Really Sorry Meri Jaan – Holi Special 💔→❤️</title>
+  <title>Sorry – Holi Special 💔→❤️</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap');
 
@@ -17,9 +17,6 @@
       justify-content: center;
       align-items: center;
       padding: 15px;
-      background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255,105,180,0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(186,85,211,0.2) 0%, transparent 50%);
     }
 
     .card {
@@ -61,7 +58,6 @@
       border-radius: 50%;
       border: none;
       cursor: pointer;
-      font-size: 0;
       transition: all 0.3s;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
@@ -97,8 +93,8 @@
     }
 
     @keyframes heartbeat {
-      0%,100%   { transform: scale(1); }
-      50%       { transform: scale(1.3); }
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
     }
 
     button.big {
@@ -117,15 +113,52 @@
       background: #c2185b;
       transform: translateY(-3px);
     }
+
+    /* Beat Me Game */
+    #beatPage, #finalPage {
+      display: none;
+      min-height: 80vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #dog {
+      font-size: 120px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s;
+    }
+
+    #dog:active {
+      transform: scale(0.85);
+    }
+
+    #beatCount {
+      font-size: 32px;
+      font-weight: bold;
+      color: #e91e63;
+      margin: 20px 0;
+    }
+
+    #finalPage {
+      background: linear-gradient(135deg, #fff0f5, #e1f5fe);
+      animation: fadeIn 1.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
 
-<div class="card">
-  <h1>Sorry Meri Jaan 💔</h1>
+<div class="card" id="mainCard">
+  <h1>Sorry – Holi Special 💔</h1>
 
   <p>Aaj Holi thi... aur maine aapko color nahi kiya.</p>
-  <p>aap mujhe color karne aayi thi, kitni excitement se, kitne pyaar se...<br>aur maine aapko ignore kar diya 😔</p>
+  <p>Aap mujhe color karne aayi thi, kitni excitement se, kitne pyaar se...<br>aur maine aapko ignore kar diya 😔</p>
 
   <div class="colors" id="colorContainer">
     <button class="color-btn pink"    onclick="collectColor(this)"></button>
@@ -145,7 +178,7 @@
   <div id="sorryLetter">
     <p>Meri jaan, main sach mein bahut bada idiot hoon.</p>
     
-    <p>aap kitni pyaar se colors leke mujhe rangne aayi thi,<br>aur maine socha “mere paas color nahi hai toh main bhi aapko color nahi laga paunga”…</p>
+    <p>Aapne kitne pyaar se colors leke mujhe rangne aayi thi,<br>aur maine socha “mere paas color nahi hai toh main bhi aapko color nahi kar paunga”…</p>
     
     <p>Lekin asli wajah yeh thi ki main aapko disappoint nahi karna chahta tha.<br>Par maine aapko hurt kar diya. Yeh meri sabse badi galti thi aaj. 💔</p>
     
@@ -153,14 +186,35 @@
     
     <p>Abhi bhi bohot late nahi hua hai na?<br>Main abhi bhi aapko bohot saara pyaar aur colors dena chahta hoon…<span class="heart">❤️❤️❤️</span></p>
     
-    <p>Please mujhe maaf kar do meri jaan.<br>Main promise karta hoon aage se kabhi bhi aisa nahi karunga.<br>aap meri Holi ho, meri khushi ho, meri sab kuch ho. 🥹</p>
+    <p>Please mujhe maaf kar dijiye.<br>Main promise karta hoon aage se kabhi bhi aisa nahi karunga.<br>Aap meri Holi hain, meri khushi hain, meri sab kuch hain. 🥹</p>
     
-    <p>Ab aap bolo… mujhe maaf karegi na?<br>Aur agle Holi pe main aapko sabse zyada color karunga – promise! 🌈💕</p>
+    <p>Ab aap hi bataye… mujhe maaf karengi na?<br>Aur agle Holi pe main aapko sabse zyada color karunga – promise! 🌈💕</p>
 
-    <p>I love you bohot zyada,<br>Tera wahi stupid & pyaar karne wala kush please baby please, I just fucked up please maaf kardo </p>
+    <p>I love you bohot zyada,<br>Aapka wahi stupid & pyaar karne wala banda</p>
 
-    <button class="big" onclick="alert('She said YES! 🥹💖 Now go hug her!')">I forgive you</button>
+    <button class="big" onclick="showBeatPage()">I forgive you</button>
   </div>
+</div>
+
+<!-- Beat Me Page -->
+<div id="beatPage" class="card" style="display:none;">
+  <h2 style="color:#e91e63;">Beat me please...</h2>
+  <p style="font-size:18px; color:#555;">(Tap the dog 50 times)</p>
+  <div id="dog" onclick="beatDog()">🐶</div>
+  <div id="beatCount">0 / 50</div>
+</div>
+
+<!-- Final Pleading Page -->
+<div id="finalPage" class="card" style="display:none;">
+  <h1 style="color:#e91e63; font-size:42px;">Please Maaf Kar Do 🥺</h1>
+  <p style="font-size:22px; line-height:1.8;">
+    I want to meet you please...<br>
+    Wohi jagah pe jo batayi thi...<br><br>
+    Please maaf kar do please...<br>
+    Please please please please please<br>
+    I love you bohot zyada 💔❤️
+  </p>
+  <div class="heart" style="font-size:60px;">❤️❤️❤️</div>
 </div>
 
 <script>
@@ -181,6 +235,26 @@
           document.getElementById('colorContainer').style.opacity = '0.4';
         }, 1200);
       }
+    }
+  }
+
+  // Show beat page after forgive
+  function showBeatPage() {
+    document.getElementById('mainCard').style.display = 'none';
+    document.getElementById('beatPage').style.display = 'flex';
+  }
+
+  // Beat dog game
+  let beats = 0;
+  function beatDog() {
+    beats++;
+    document.getElementById('beatCount').innerHTML = `${beats} / 50`;
+    
+    if (beats >= 50) {
+      setTimeout(() => {
+        document.getElementById('beatPage').style.display = 'none';
+        document.getElementById('finalPage').style.display = 'flex';
+      }, 800);
     }
   }
 </script>
